@@ -14,7 +14,7 @@ export default {
 
   methods: {
     checkTask() {
-      this.task.isDone = !this.task.isDone;
+      this.$emit('check', this.task)
     },
     deleteTask() {
       this.$emit('remove', this.task)

@@ -1,7 +1,7 @@
 <template>
   <div>
     <TaskForm @create="createTask"/>
-    <TaskList @remove="removeTask" :tasks="tasks"/>
+    <TaskList @check="checkTask" @remove="removeTask" :tasks="tasks"/>
   </div>
 </template>
 
@@ -25,6 +25,10 @@ export default {
 
     createTask(task) {
       this.tasks.push(task)
+    },
+
+    checkTask(task) {
+      this.tasks = this.tasks.map()
     },
 
     removeTask(task) {

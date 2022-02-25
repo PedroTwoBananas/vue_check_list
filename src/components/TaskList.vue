@@ -1,6 +1,6 @@
 <template>
   <ul class="list">
-    <TaskItem @remove="deleteTask" v-for="task in tasks" :key="task.id" :task="task"/>
+    <TaskItem @check="checkTask" @remove="deleteTask" v-for="task in tasks" :key="task.id" :task="task"/>
   </ul>
 </template>
 
@@ -17,6 +17,9 @@ export default {
   },
   methods: {
     deleteTask(task) {
+      this.$emit('remove', task)
+    },
+    checkTask(task) {
       this.$emit('remove', task)
     }
   }
