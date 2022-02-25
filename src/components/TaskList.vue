@@ -1,6 +1,6 @@
 <template>
   <ul class="list">
-    <TaskItem v-for="task in tasks" :key="task.id" :task="task" :removeTask="removeTask"/>
+    <TaskItem @remove="deleteTask" v-for="task in tasks" :key="task.id" :task="task"/>
   </ul>
 </template>
 
@@ -8,13 +8,17 @@
 import TaskItem from "@/components/TaskItem";
 
 export default {
+  props: {
+    tasks: []
+  },
 
   components: {
     TaskItem
   },
-  props: {
-    removeTask: Function,
-    tasks: []
+  methods: {
+    deleteTask(task) {
+      this.$emit('remove', task)
+    }
   }
 }
 

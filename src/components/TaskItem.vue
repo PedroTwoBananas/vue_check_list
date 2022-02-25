@@ -9,17 +9,15 @@
 <script>
 export default {
   props: {
-    task: {
-
-    },
-    removeTask: Function
+    task: {},
   },
+
   methods: {
     checkTask() {
       this.task.isDone = !this.task.isDone;
     },
     deleteTask() {
-      this.removeTask(this.task)
+      this.$emit('remove', this.task)
     }
   }
 }
