@@ -1,7 +1,7 @@
 <template>
   <div>
-    <TaskForm />
-    <TaskList/>
+    <TaskForm @create="createTask"/>
+    <TaskList :removeTask="removeTask" :tasks="tasks"/>
   </div>
 </template>
 
@@ -22,7 +22,12 @@ export default {
   },
 
   methods: {
-
+    createTask(task) {
+      this.tasks.push(task)
+    },
+    removeTask(task) {
+      this.tasks = this.tasks.filter(key => key.id !== task.id)
+    }
   }
 }
 </script>

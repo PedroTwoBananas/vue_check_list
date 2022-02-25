@@ -1,11 +1,12 @@
 <template>
   <div>
     <input
+        @keyup.enter="createTask"
         v-model="task.text"
         type="text"
         placeholder="Введите задачу"
     >
-    <button>Добавить</button>
+    <button @click="createTask">Добавить</button>
   </div>
 </template>
 
@@ -20,7 +21,16 @@ export default {
     }
   },
 
-  methods: {}
+  methods: {
+    createTask() {
+      this.task.id = Date.now();
+      this.task.isDone = false;
+      this.$emit('create', this.task);
+      this.task = {
+        text: ''
+      }
+    }
+  }
 }
 
 </script>
